@@ -1,0 +1,19 @@
+{% load i18n %}
+{% load static %}
+
+{% spaceless %}
+
+<div class="auth-form-captcha d-flex justify-content-sm-between flex-wrap">
+<img src="{{ image }}" class="captcha_img" alt="captcha" width="140" height="38">
+
+
+
+<input type="submit" name="action" value="Обновить" class="ml-2 fs-d button custom-btn__black" style="flex: 1">
+</div>
+<div>
+
+      {% include "django/forms/widgets/multiwidget.html" %}
+</div>
+
+
+{% endspaceless %}

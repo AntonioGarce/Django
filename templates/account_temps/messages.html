@@ -1,0 +1,42 @@
+{% include "header.html" %} {% autoescape off %}
+{% include "account_asset.html" %}
+
+<div class="col-12 col-md-10 mt-3 mt-sm-0">
+<div class="alert alert-danger">
+Внимание! Команда сайта никогда не пишет с просьбой пополнить какой либо кошелек.
+О всех финансовых изменениях мы дублируем на всех дружественных форумах и в обновлениях
+в панеле администратора! Пожалуйста, будьте бдительны!
+</div>
+<h6 class="sm mb-3">Ваши диалоги</h6>
+<div class="table-content table-responsive">
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Тема</th>
+<th scope="col">Название магазина</th>
+<th scope="col">Действия</th>
+</tr>
+</thead>
+    {% if user.is_authenticated %}
+
+<tbody>
+
+        {% for i in user_dialogs %}
+        <td> {{ i.thema }}</td>
+        <td> {{ i.store_name }}</td>
+        <td> {{ i.action }}</td>
+        {% endfor %}
+</tr></tbody>
+</table>{% endif %}
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+{% endautoescape %}{% include "footer.html" %}

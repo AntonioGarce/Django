@@ -1,0 +1,50 @@
+{% include "header.html" %} {% autoescape off %}
+{% include "account_asset.html" %}
+<div class="col-12 col-md-10 mt-3 mt-sm-0">
+<h6 class="sm mb-3">Ваши обмены</h6>
+<div class="table-content table-responsive">
+<table class="table">
+<thead>
+<tr>
+<th scope="col">#</th>
+<th scope="col">Обменник</th>
+<th scope="col">Сумма</th>
+<th scope="col">Статус</th>
+<th scope="col">Создан</th>
+<th scope="col">Действия</th>
+</tr>
+</thead>
+<tbody>
+<tr>        
+    {% if user.is_authenticated %}
+
+        {% for i in user_exc %}
+        <td> {{ i.number }}</td>
+        <td> {{ i.name }}</td>
+        <td> {{ i.amount_in_BTC }}</td>
+
+    {% if not i.rek %}
+        <td> Открыт</td>
+    {% else %}
+            <td> Закрыт</td>
+    {% endif %}
+
+        <td> {{ i.date }}</td>
+        <td>
+            <a class="btn btn-sm btn-info" href="{% url 'diialog_window' i.number %}">К диалогу</a>
+        </td>
+
+</tr>{% endfor %}
+    {% endif %}</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+{% endautoescape %}{% include "footer.html" %}

@@ -1,0 +1,52 @@
+{% include "header.html" %} {% autoescape off %}
+{% include "account_asset.html" %}
+<div class="col-12 col-md-10 mt-3 mt-sm-0">
+<h6 class="sm mb-3">Новое обращение в поддержку</h6>
+<div class="card mb-3">
+<div class="card-body">
+<span>
+<strong> Внимание: Увеличились попытки открытия фейковых магазинов</strong>
+<br>С текущего момента чтобы открыть магазин требуется:<br>
+- Розничный магазин: 30 000р на депозит + фото товара от 50гр<br>
+- Оптовый магазин: 100 000р на депозит + фото товара от 500гр<br>
+Депозит возвращается через месяц после закрытия магазина!
+</span> <br><br>
+</div>
+</div>
+<p class="alert alert-danger">
+Если у Вас возникнли проблемы с товаром, то вы должны написать <strong>магазину.</strong>
+<br>
+<strong>Список ваших покупок <a href="{% url 'orders'%}">здесь.</a></strong>
+<br>
+<span>Перейдите по ссылке выше и найдите товар с которым у вас возникли проблемы.
+Нажмите кнопку <strong>Написать продавцу</strong> и, если нужно, пригласите модератора в чат.
+Все вопросы по товару напрямую модератору через поддержку будут игнорироваться.</span>
+</p>
+<form action="{% url 'create_ticket'%}" method="post">
+    {% csrf_token %}
+<input type="hidden" name="_token" value="hEWvA8bem3In0NGNPQOBhVeQ5O2cCJhjZ9vn7CLo"> <div class="form-group">
+<label for="subject">Тема запроса</label>
+<select name="subject" id="subject">
+    <option value="Открыть магазин">Открыть магазин</option>
+<option value="Техническая проблема">Техническая проблема</option>
+<option value="Сотрудничество/деловое предложение">Сотрудничество/деловое предложение</option>
+<option value="Добавление города/района">Добавление города/района</option>
+<option value="Фин. вопрос/Проверка платежа">Фин. вопрос/Проверка платежа</option>
+<option value="Сменить название магазина">Сменить название магазина</option>
+
+</select>
+<label for="message-input" class="mt-4">Сообщение</label>
+<textarea id="message-input" rows="5" name="message" placeholder="Детали обращения"></textarea>
+</div>
+<button type="submit" class="button custom-btn__black px-5">Создать тикет</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+{% endautoescape %}{% include "footer.html" %}

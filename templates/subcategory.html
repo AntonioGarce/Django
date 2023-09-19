@@ -1,0 +1,235 @@
+{% include "header.html" %} {% autoescape off %}
+{% load static %}
+{% load mathfilters %}
+{% load custom_filter %}
+
+
+<div class="body-wrapper">
+
+<div>
+<div class="breadcrumb-area">
+<div class="container">
+<div class="breadcrumb-content">
+<ul>
+<li><a href="{% url 'index'%}">Главная</a></li>
+<li>
+<a class="active">
+Товары
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="content-wraper pt-30 pb-60">
+<div class="container">
+<div class="row">
+<div class="col-lg-9 order-1 order-lg-2">
+<div class="shop-top-bar">
+<div class="product-select-box">
+<div class="product-short">
+<p>Сортировать по:</p>
+<div class="select-box">
+<div class="select-box__current" tabindex="1">
+<div class="select-box__value">
+<p class="select-box__no-input-text">Кол-ву продаж</p>
+</div>
+<i class="fa fa-chevron-down select-box__icon"></i>
+</div>
+<ul class="select-box__list">
+<li>
+ <a class="select-box__option" aria-hidden="aria-hidden" href="">Кол-ву
+продаж</a>
+</li>
+<li>
+<a class="select-box__option" aria-hidden="aria-hidden" href="">Цене</a>
+</li>
+<li>
+<a class="select-box__option" aria-hidden="aria-hidden" href="">Весу</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="shop-products-wrapper">
+<div class="tab-content">
+<div class="tab-pane fade active show">
+<div class="product-area shop-product-area">
+<div class="row">
+
+ {% for i in items %}
+<div class="col-6 col-md-3 col-sm-4 mt-30">
+<a href="{% url 'item' i.id BD %}">
+</a><div class="single-product-wrap"><a href="{% url 'item' i.id BD %}">
+ {% if i.img %}
+
+ <div class="product-image">
+<img src="{{ i.img.url }}" alt="Product Image">
+</div>
+ {% endif %}
+</a><div class="product_desc"><a href="{% url 'item' i.id BD %}">
+</a><div class="product_desc_info"><a href="{% url 'item' i.id BD %}">
+<h4 class="product_name text-truncate text-center" title="{{i.name}}">
+{{i.name}}
+</h4>
+</a><h4 class="product_name text-truncate text-center mt-0 pt-0"><a href="{% url 'item' i.id BD %}">
+<img width="13px" src="./subcategory_files/crown.svg" alt="">
+</a><a href="">{{ i.store }}</a>
+</h4>
+<div class="price-box text-center">
+<div class="price-line">
+<span class="new-price">от <strong>{{i.min_price}} ₽</strong> /
+{{i.amount}}
+мл
+</span>
+</div>
+<span class="sub-price">
+ ~{{ i.min_price|divide:kurs }}
+<i class="fa fa-btc" aria-hidden="true"></i>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+ {% endfor %}
+
+</div>
+</div>
+</div>
+<!--<div class="mt-4">-->
+<!--<nav>-->
+<!--<ul class="pagination">-->
+<!--<li class="page-item disabled" aria-disabled="true">-->
+<!--<span class="page-link">« Previous</span>-->
+<!--</li>-->
+<!--<li class="page-item">-->
+<!--<a class="page-link" href="https://blacksprut.com/products?subcategory=24&amp;city=2051&amp;page=2" rel="next">Next »</a>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</nav>-->
+<!--</div>-->
+</div>
+</div>
+</div>
+<div class="col-lg-3 order-2 order-lg-1">
+<div class="sidebar-categores-box mt-sm-30 mt-xs-30">
+<div class="accordion" id="menu_bs">
+<button style="font-size: 16px" class="p-0 btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThreebs" aria-expanded="false" aria-controls="collapseThreebs">
++ Категории
+</button>
+<div id="collapseThreebs" class="collapse" aria-labelledby="headingThree" data-parent="#menu_bs" style="">
+{% for i in products %}
+ <div class="accordion" id="menu_bs_15">
+
+<button style="font-size: 14px" class="p-0 btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree15" aria-expanded="false" aria-controls="collapseThree15">
+ {{ i.title }}
+</button>
+<div id="collapseThree15" class="collapse" aria-labelledby="headingThree" data-parent="#menu_bs_15">
+<div class="d-flex flex-column">
+ {% for category in i.subtitle|split:' ' %}
+<a style="margin-left: 10px; font-size:13px;" href="">
+ {{category}}
+</a>
+ {% endfor %}
+</div>
+</div>
+</div>
+ {% endfor %}
+</div>
+</div>
+ <strong>Выбрано: </strong>
+ {{current_product.title}} &gt;
+{{ category_name }}
+<a href="">
+Сбросить
+</a>
+
+<div class="category-sub-menu">
+<form action="" method="get">
+<input value="24" type="text" name="subcategory" hidden="" style="display: none">
+<div class="mt-15">
+<input class="mb-0 filter-input" type="text" name="name" placeholder="Поиск..." value="">
+</div>
+<div class="mt-15">
+
+
+</div>
+<div class="mt-15">
+<select class="filter-input" name="region" onchange="this.form.submit()">
+<option value="">Выберите район</option>
+ {% include "cities.html" %}
+</select>
+</div>
+<div class="d-flex">
+<div class="mt-15 mr-20">
+<label for="price_from">Цена от:</label>
+<input class="mb-0 filter-input" type="number" min="0" step="100" id="price_from" name="price_min" value="">
+</div>
+<div class="mt-15">
+<label for="price_to">Цена до:</label>
+<input class="mb-0 filter-input" type="number" min="0" step="100" id="price_to" name="price_max" value="">
+</div>
+</div>
+<div class="d-flex">
+<div class="mt-15 mr-20">
+<label for="weight_form">Вес от:</label>
+<input class="mb-0 filter-input" type="number" step="0.1" min="0" id="weight" name="weight_min" value="">
+</div>
+<div class="mt-15">
+<label for="weight_form">Вес до:</label>
+<input class="mb-0 filter-input" type="number" step="0.1" min="0" id="weight" name="weight_max" value="">
+</div>
+</div>
+<div class="mt-15">
+<select class="filter-input" name="type">
+ <option value="">Тип клада</option>
+<option value="8">Без типа</option>
+<option value="10">Земляной прикоп</option>
+<option value="13">Камень - тайник</option>
+<option value="9">Клад в подъезде</option>
+<option value="4">Магнит</option>
+<option value="12">Магнит (подъезд + код доступа)</option>
+<option value="6">Предзаказ</option>
+<option value="5">Прикоп</option>
+<option value="7">Снежный прикоп</option>
+<option value="11">супер стелс-тайники</option>
+<option value="3">Тайник</option>
+</select>
+</div>
+<div class="d-flex align-items-center mt-3">
+<input class="filter-cb mr-1" type="checkbox" id="my-city" name="city" value="2051" checked="">
+<label class="form-check-label fs-d" for="my-city">Мой город:
+ {{ user.city }}</label>
+</div>
+<div class="d-flex align-items-center mt-1">
+<input class="filter-cb mr-1" type="checkbox" id="deposit-check" name="with_deposit" value="1">
+<label class="form-check-label fs-d" for="deposit-check">От магазина с депозитом</label>
+</div>
+<div class="d-flex align-items-center mt-1">
+<input class="filter-cb mr-1" type="checkbox" id="inst-check" checked="" name="instant" value="1">
+<label class="form-check-label fs-d" for="inst-check">Моментальные клады</label>
+</div>
+<button type="submit" class="stores-filter-button w-100 mt-4">
+Применить
+</button>
+</form>
+<a href="" class="btn btn-danger btn-sm w-100 mt-4">
+Сбросить фильтр
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<script src="static/products_files/jquery-3.5.1.min.js"></script>
+<script src="static/products_files/bootstrap.min.js"></script>
+
+
+{% endautoescape %}{% include "footer.html" %}

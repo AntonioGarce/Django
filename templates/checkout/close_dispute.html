@@ -1,0 +1,17 @@
+{% include "header.html" %} {% autoescape off %}
+    <div class="col-12 col-md-10 mt-3 mt-sm-0">
+                    <p class="mb-0">Вы подтверждаете закрытие диспута ?</p>
+                    <p><i class="small mt-0">После закрытия диспута, сделка считается завершенной.</i></p>
+
+                                            <form action="{% url 'close_dispute' dispute_num %}" method="post">
+                                                {% csrf_token %}
+                            <input type="hidden" name="_token" value="5CVgmHDlvoLvFFzxPy4hmoG8t1nglSWYMAJzAL7U">
+                                                <input name="action" value="Закрыть диспут" type="submit" class="btn btn-sm btn-danger mt-2 px-4">
+                            <p></p>
+                        </form>
+                                    </div>
+            </div>
+        </div>
+    </div>
+            </div>
+{% endautoescape %}{% include "footer.html" %}

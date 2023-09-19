@@ -1,0 +1,69 @@
+<div class="body-wrapper">
+
+<div>
+<div class="breadcrumb-area">
+<div class="container">
+<div class="breadcrumb-content">
+<ul>
+<li><a href="{% url 'index' %}">Главная</a></li>
+<li>
+<a href="{% url 'stores' %}">
+Магазины
+</a>
+</li>
+<li>
+<a class="active">
+{{ store.name }}
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="content-wraper pt-30 pb-60">
+<div class="container">
+<div>
+<div class="shop-banner">
+   {% if store.cover %}
+ <img class="w-100" src="{{ store.cover.url }}" alt="" style="border-radius: 3px;">
+{% else %}
+<img class="w-100" src="static/images/no-cover.png" alt="" style="border-radius: 3px;">
+ {% endif %}
+
+</div>
+<div class="d-flex justify-content-sm-between flex-wrap p-3 pb-1 pt-4">
+<div class="d-flex align-items-center">
+<h5 class="mb-0 store-details__title">{{ store.name }}</h5>
+<span class="ml-25">
+<span>Рейтинг: <strong>{{ store.rating }}</strong></span>
+</span>
+<span class="ml-25">
+<span>Продаж: <strong>{{ store.sold }}</strong></span>
+</span>
+<span class="ml-25">
+<span>Депозит:
+<strong>{{ store.deposit }}</strong> <i class="fa fa-btc"></i>
+</span>
+</span>
+    <span class="ml-25">
+<span>Категория:
+<strong>{{ store.store_type }}</strong>
+</span>
+</span>
+</div>
+<a href="">
+<span>Написать продавцу</span>
+</a>
+</div>
+<div class="d-flex justify-content-sm-between flex-wrap p-3" style="background-color: #f9f9f9;">
+<div class="d-flex align-items-center">
+<a href="{% url 'store_page' store.id  %}">Назад
+в магазин</a>
+</div>
+    {% if store.telegram_bot %}
+<div class="d-flex align-items-center">
+<a href="{{ store.telegram_bot }}" target="_blank" class="bot-button custom-btn__orange ml-20">Telegram бот</a>
+</div>
+    {% endif %}
+</div>
+</div>

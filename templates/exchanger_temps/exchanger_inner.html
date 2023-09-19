@@ -1,0 +1,145 @@
+{% include "header.html" %} {% autoescape off %}
+
+<div class="body-wrapper">
+
+
+    <div>
+        <div class="breadcrumb-area">
+            <div class="container">
+
+
+                <div class="breadcrumb-content">
+                    <ul>
+                        <li><a href="{% url 'index' %}">Главная</a></li>
+                        <li>
+                            <a href="{% url 'changer' %}">
+                                Обменники
+                            </a>
+                        </li>
+                        <li>
+                            <a class="active">
+                                {{ current_exchanger.name }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-wraper pt-30 pb-60">
+            <div class="container">
+                {% if messages %}
+                {% for message in messages %}
+                <div class="mt-3 mb-3">
+                    <div class="alert alert-danger mb-2 mt-2">
+                        <p class="mb-0">{{ message }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+
+                <div class="mt-3 mb-3">
+                </div>
+                <div class="d-flex justify-content-sm-between flex-wrap p-3 pb-1 pt-4">
+                    <div class="d-flex align-items-center">
+                        <h5 class="mb-0 store-details__title">{{ current_exchanger.name }}</h5>
+
+                    </div>
+
+                </div>
+                <div class="d-flex justify-content-sm-between flex-wrap p-3" style="background-color: #f9f9f9;">
+                    <div class="d-flex align-items-center">
+                        <span>Депозит: <strong>{{ current_exchanger.deposit }} BTC</strong></span>
+                    </div>
+                </div>
+
+
+                <div class="card mt-3 mb-3">
+                    <div class="card-body ws-pl">
+                        {{ description|safe }}
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="li-section-title mb-3">
+                        <h2>
+                            <span>Рассчитать обмен</span>
+                        </h2>
+                    </div>
+                    <div class="px-3">
+
+                        <form action="{% url 'exchanger_inner' current_exchanger.id %}" method="post">
+                            {% csrf_token %}
+                            <label for="method">Cпособ оплаты: </label>
+                            <select id="method" name="method" class="custom-select-sm">
+                                {% for method in methods %}
+                                <option value="{{ method }}">{{ method }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                            <div class="mt-3">
+                                <label>Сумма пополнения: </label>
+                                <input type="number" min="0" class="filter-input form-control-sm" style="height: 30px;"
+                                       name="amount" value="">
+                            </div>
+
+                            <button type="submit" class="btn custom-btn__black btn-sm mt-4 px-4">Продолжить</button>
+                        </form>
+                    </div>
+                </div>
+
+                <section class="mt-45">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="li-section-title">
+                                    <h2><span>Последние отзывы</span></h2>
+                                </div>
+                                <div class="col-12 mt-3 li-comment-section">
+                                    <ul>
+                                        {% for r in reviews %}
+                                        {% if r.is_from_admin %}
+                                        <li class="comment-children p-1 py-sm-2 px-sm-3">
+                                            <div class="comment-body pl-15">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <h5 class="comment-author mb-0">Ответ представителя</h5>
+                                                </div>
+                                                <p>{{ r.text }}</p>
+                                            </div>
+                                        </li>
+                                        {% else %}
+                                        <li>
+                                            <div class="d-flex">
+                                                <div class="author-avatar pt-15">
+                                                    <img src="/static/images/no-img.png"
+                                                         width="60" height="60" alt="">
+                                                    <p class="review-operations">Покупок: {{ r.buys }}</p>
+                                                </div>
+                                                <div class="comment-body pl-20">
+                                                    <div class="d-flex align-items-center justify-content-between">
+                                                        <h5 class="comment-author pt-15">{{ r.nick }}</h5>
+                                                        <p class="pt-15 ml-3"></p>
+                                                    </div>
+                                                    <div class="comment-post-date">{{ r.date }}</div>
+                                                    <p>{{ r.text }}</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        {% endif %}
+                                        {% endfor %}
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+{% endautoescape %}{% include "footer.html" %}

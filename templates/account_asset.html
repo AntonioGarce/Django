@@ -1,0 +1,72 @@
+<!--<div class="row">-->
+<!--  <div class="col-4">-->
+<!--    <div class="list-group" id="list-tab" role="tablist">-->
+<!--      <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">Home</a>-->
+<!--      <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile">Profile</a>-->
+<!--      <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list" href="#list-messages" role="tab" aria-controls="list-messages">Messages</a>-->
+<!--      <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="list-settings">Settings</a>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<div class="body-wrapper">
+
+<div>
+<div class="breadcrumb-area">
+<div class="container">
+<div class="breadcrumb-content">
+<ul>
+<li><a href="{% url 'index'%}">Главная</a></li>
+<li>
+<a class="active">
+Личный кабинет
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="content-wraper pt-30 pb-60">
+<div class="container">
+<div class="row">
+<div class="col-12 col-md-2" style="border-right: 1px solid #ccc;">
+<ul class="acc-menu">
+
+<li class="active">
+<a href="{% url 'account'%}">Аккаунт</a>
+</li>
+<li class="">
+<a href="{% url 'messages'%}">
+Сообщения
+</a>
+</li>
+<li class="">
+<a href="{% url 'dispute'%}">
+<strong>Диспуты</strong>
+</a>
+</li>
+<li class="">
+<a href="{% url 'exchanges'%}">
+<strong>Обмены</strong>
+</a>
+</li>
+<li class="">
+<a href="{% url 'orders'%}">Мои покупки</a>
+</li>
+<li class="">
+<a href="{% url 'favorites'%}">Избранное</a>
+</li>
+<li class="">
+<a href="{% url 'settings'%}">Настройки</a>
+</li>
+<li class="">
+<a href="{% url 'tickets'%}">Поддержка</a>
+</li>
+<li class="">
+<a href="{% url 'sessions'%}">
+<strong>
+Выйти со всех устройств
+</strong>
+</a>
+</li>
+</ul>
+</div>

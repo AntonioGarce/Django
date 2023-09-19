@@ -1,0 +1,130 @@
+{% include "header.html" %} {% autoescape off %}
+
+
+    <div class="content-wraper pt-30 pb-60">
+        <div class="container">
+            
+            <div class="row">
+                {% include "account_asset.html" %}
+
+                <div class="col-12 col-md-10 mt-3 mt-sm-0">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                                                            <strong>Магазин:
+                                </strong><a href="">
+                                    {{ cur_dispute.store }}
+                                </a>
+                                                    </li>
+                        <li class="list-group-item">
+                            <strong>Название товара:
+                            </strong>{{ cur_dispute.item }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Диспут по закладке
+                                #{{cur_dispute.dispute_num}}:
+                            </strong>в углу шкафа,куда указывает стрелка,присыпано листвой 
+https://ibb.co/ngQCvcB
+https://ibb.co/Lpt6cqH
+https://ibb.co/NY397jh
+https://ibb.co/PTHwPrT
+https://ibb.co/T0wjQRC
+https://ibb.co/0qDxfT9
+https://ibb.co/nRTkfyH
+                        </li>
+                        <li class="list-group-item">
+                            диспута
+                            {{cur_dispute.data}}
+                        </li>
+                    </ul>
+
+                    
+                    
+                    <hr class="my-3">
+                     <div class="messages-container custom-scrollbar">
+
+                                                    <div>
+                                                                    <strong>Система</strong>
+                                                                <div class="alert alert-secondary" role="alert">
+                                    <span class="font-italic" style="white-space:pre-line;">Пользователь открыл диспут по закладке #{{cur_dispute.dispute_num}}</span>
+                                    <p class="mb-2">
+                                        <span class="float-right">{{cur_dispute.data}}</span>
+                                    </p>
+                                    <div class="text-muted">
+                                        <small>Отправлено</small>
+                                    </div>
+                                </div>
+                            </div>
+                                            </div>
+
+                    {% for i in dispute_dialogs: %}
+                                            {% if i.user_text != None %}
+
+                    <div class="messages-container custom-scrollbar">
+                                                    <div>
+                                                        <strong>{{i.user_login}}</strong>
+                                                                <div class="alert alert-secondary" role="alert">
+                                    <span class="font-italic" style="white-space:pre-line;">{{i.user_text}}</span>
+                                    <p class="mb-2">
+                                        <span class="float-right">{{i.date}}</span>
+                                    </p>
+                                    <div class="text-muted">
+                                        <small>Отправлено 3 минуты назад</small>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    {% endif %}
+                    {% if i.admin_text != None: %}
+                     <div class="messages-container custom-scrollbar">
+                                                    <div>
+                                                                    <strong>Система</strong>
+                                                                <div class="alert alert-secondary" role="alert">
+                                    <span class="font-italic" style="white-space:pre-line;">{{i.admin_text}}}</span>
+                                    <p class="mb-2">
+                                        <span class="float-right">{{i.admin_date}}</span>
+                                    </p>
+                                    <div class="text-muted">
+                                        <small>Отправлено</small>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    <div class="messages-container custom-scrollbar">
+                                                    <div>
+                                                                    <strong>Система</strong>
+                                                                <div class="alert alert-secondary" role="alert">
+                                    <span class="font-italic" style="white-space:pre-line;">Пользователь закрыл диспут</span>
+                                    <p class="mb-2">
+                                        <span class="float-right">{{cur_dispute.data}}</span>
+                                    </p>
+                                    <div class="text-muted">
+                                        <small>Отправлено</small>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+
+                    
+                    <div class="paginatoin-area">
+    <div class="row">
+        <div class="col-md-4">
+            <p>Результаты 1-2 из 2</p>
+        </div>
+        <div class="col-md-8">
+                    </div>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+            
+{% endautoescape %}{% include "footer.html" %}
+

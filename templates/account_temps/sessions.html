@@ -1,0 +1,20 @@
+{% include "header.html" %} {% autoescape off %}
+{% include "account_asset.html" %}
+<div class="p-5">
+<form action="{% url 'sessions'%}" method="post">
+        {% csrf_token %}
+
+<input type="hidden" name="_token" value="hEWvA8bem3In0NGNPQOBhVeQ5O2cCJhjZ9vn7CLo"> <label for="withdraw">Введите свой пароль: </label>
+<input type="password" name="password" class="filter-input" placeholder="Пароль" id="password">
+<button class="btn btn-sm custom-btn__black mt-3 px-4 mr-2">Удалить сессии</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+{% endautoescape %}{% include "footer.html" %}

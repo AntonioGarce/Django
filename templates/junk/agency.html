@@ -1,0 +1,367 @@
+{% include "header.html" %} {% autoescape off %}
+
+<div class="body-wrapper">
+
+<div>
+<div class="breadcrumb-area">
+<div class="container">
+<div class="breadcrumb-content">
+<ul>
+<li><a href="{% url 'changer' %}">Главная</a></li>
+<li>
+<a href="{% url 'stores' %}">
+Магазины
+</a>
+</li>
+<li>
+<a class="active">
+Кадровое Агенство BS
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="content-wraper pt-30 pb-60">
+<div class="container">
+<div>
+<div class="shop-banner">
+<img class="w-100" src="static/images/start.jpg" alt="" style="border-radius: 3px;">
+</div>
+ <div class="d-flex justify-content-sm-between flex-wrap p-3 pb-1 pt-4">
+<div class="d-flex align-items-center">
+<h5 class="mb-0 store-details__title">Кадровое Агенство BS</h5>
+<span class="ml-25">
+<span>Рейтинг: <strong>0</strong></span>
+</span>
+<span class="ml-25">
+<span>Продаж: <strong>12</strong></span>
+</span>
+<span class="ml-25">
+<span>Депозит:
+<strong>0</strong> <i class="fa fa-btc"></i>
+</span>
+</span>
+</div>
+<a href="">
+<span style="vertical-align: middle;">Написать продавцу</span>
+</a>
+</div>
+<div class="d-flex justify-content-sm-between flex-wrap p-3" style="background-color: #f9f9f9;">
+<div class="d-flex align-items-center">
+<a href="" class="ml-25">Правила магазина</a>
+<a href="" class="ml-25">Отзывы магазина</a>
+</div>
+<div class="d-flex align-items-center">
+</div>
+</div>
+</div>
+<section class="product-area li-laptop-product pt-45 pb-30">
+<div class="container">
+<div class="row">
+<div class="col-lg-12">
+<div class="li-section-title">
+<h2>
+<span>Витрина магазина</span>
+</h2>
+</div>
+<div class="store__products-filter">
+<div class="store__filter-block">
+<form action="">
+<div class="d-flex  justify-content-between">
+<div class="select-wrapper m-1">
+<select name="region" class="form-control-sm" id="change_region">
+<option value="">Район</option>
+<optgroup label="Отправка по РФ">
+<option value="543">(Х)Без района
+</option>
+</optgroup>
+</select>
+</div>
+<div class="select-wrapper m-1">
+<select class="form-control-sm" name="subcategory" id="change_subcategory">
+<option value="">Категория</option>
+<optgroup label="Другoе">
+ <option value="69">
+Аксессуары для курения
+</option>
+<option value="76">
+Каршеринг
+</option>
+<option value="79">
+Дизайн. Графика. Отрисовка документов
+</option>
+<option value="88">
+Финансы. Карты. Кошельки. Обнал
+</option>
+<option value="89">
+Пробив. Поиск людей и информации
+</option>
+<option value="90">
+SIM-карты. Мобильная связь
+</option>
+<option value="96">
+Хаккинг/Взлом
+</option>
+<option value="97">
+Хаккерские атаки
+</option>
+<option value="98">
+Софт
+ </option>
+<option value="99">
+Базы данных
+</option>
+<option value="100">
+Освобождение от армии. Увольнение из армии
+</option>
+<option value="101">
+Документы
+</option>
+<option value="102">
+Переезд за границу
+</option>
+<option value="103">
+Разное
+</option>
+<option value="145">
+Оборудование для майнинга
+</option>
+</optgroup>
+<optgroup label="Работа">
+<option value="71">
+Курьер
+</option>
+<option value="72">
+Склад
+</option>
+<option value="73">
+Химик
+</option>
+<option value="74">
+Перевозчик
+</option>
+<option value="75">
+Трафаретчик
+</option>
+<option value="80">
+HR-Менеджер
+</option>
+<option value="111">
+Гровер
+</option>
+<option value="112">
+Лаборант
+</option>
+</optgroup>
+</select>
+</div>
+<div class="select-wrapper m-1">
+<select class="form-control-sm" name="type" id="change_type">
+<option value="">Тип</option>
+<option value="8">Без типа</option>
+</select>
+</div>
+</div>
+<button type="submit" class="bot-button custom-btn__orange w-100 mt-2 py-2">
+Применить
+</button>
+</form>
+</div>
+</div>
+<div class="row mt-3">
+<div class="col-6 col-md-3 col-lg-2 col-sm-4 mb-30">
+<a href="">
+</a><div class="single-product-wrap"><a href="">
+<div class="product-image">
+<img src="" alt="Product Image">
+</div>
+</a><div class="product_desc"><a href="">
+</a><div class="product_desc_info"><a href="">
+<h4 class="product_name text-truncate text-center" title="Курьер">
+Курьер
+</h4>
+</a><h4 class="product_name text-truncate text-center mt-0 pt-0"><a href="">
+<img width="13px" src="./agency_files/crown.svg" alt="">
+</a><a href="">Кадровое Агенство BS</a>
+</h4>
+<div class="price-box text-center">
+<div class="price-line">
+<span class="new-price">от <strong>3000 ₽</strong> /
+1
+шт
+</span>
+</div>
+<span class="sub-price">
+~0.00232258
+<i class="fa fa-btc" aria-hidden="true"></i>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="col-6 col-md-3 col-lg-2 col-sm-4 mb-30">
+<a href="">
+</a><div class="single-product-wrap"><a href="">
+<div class="product-image">
+<img src="static/images/grover.jpg" alt="Product Image">
+</div>
+</a><div class="product_desc"><a href="https://blacksprut.com/products/5812">
+</a><div class="product_desc_info"><a href="https://blacksprut.com/products/5812">
+<h4 class="product_name text-truncate text-center" title="Гровер">
+Гровер
+</h4>
+</a><h4 class="product_name text-truncate text-center mt-0 pt-0"><a href="https://blacksprut.com/products/5812">
+<img width="13px" src="./agency_files/crown.svg" alt="">
+</a><a href="https://blacksprut.com/stores/1275">Кадровое Агенство BS</a>
+</h4>
+<div class="price-box text-center">
+<div class="price-line">
+<span class="new-price">от <strong>100000 ₽</strong> /
+1
+шт
+</span>
+</div>
+<span class="sub-price">
+~0.07741935
+<i class="fa fa-btc" aria-hidden="true"></i>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="col-6 col-md-3 col-lg-2 col-sm-4 mb-30">
+<a href="">
+</a><div class="single-product-wrap"><a href="https://blacksprut.com/products/17703">
+<div class="product-image">
+<img src="static/images/transfer.jpg" alt="Product Image">
+</div>
+</a><div class="product_desc"><a href="https://blacksprut.com/products/17703">
+</a><div class="product_desc_info"><a href="https://blacksprut.com/products/17703">
+<h4 class="product_name text-truncate text-center" title="Перевозчик">
+Перевозчик
+</h4>
+</a><h4 class="product_name text-truncate text-center mt-0 pt-0"><a href="https://blacksprut.com/products/17703">
+<img width="13px" src="./agency_files/crown.svg" alt="">
+</a><a href="https://blacksprut.com/stores/1275">Кадровое Агенство BS</a>
+</h4>
+<div class="price-box text-center">
+<div class="price-line">
+<span class="new-price">от <strong>600000 ₽</strong> /
+1
+шт
+</span>
+</div>
+<span class="sub-price">
+~0.46451611
+<i class="fa fa-btc" aria-hidden="true"></i>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<div class="col-6 col-md-3 col-lg-2 col-sm-4 mb-30">
+<a href="">
+</a><div class="single-product-wrap"><a href="">
+<div class="product-image">
+<img src="static/images/storeee.jpg" alt="Product Image">
+</div>
+</a><div class="product_desc"><a href="">
+</a><div class="product_desc_info"><a href="">
+<h4 class="product_name text-truncate text-center" title="Склад">
+Склад
+</h4>
+</a><h4 class="product_name text-truncate text-center mt-0 pt-0"><a href="">
+<img width="13px" src="./agency_files/crown.svg" alt="">
+</a><a href="">Кадровое Агенство BS</a>
+</h4>
+<div class="price-box text-center">
+<div class="price-line">
+<span class="new-price">от <strong>50000 ₽</strong> /
+1
+шт
+</span>
+</div>
+<span class="sub-price">
+~0.03870968
+<i class="fa fa-btc" aria-hidden="true"></i>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+ <div class="col-6 col-md-3 col-lg-2 col-sm-4 mb-30">
+<a href="">
+</a><div class="single-product-wrap"><a href="">
+<div class="product-image">
+<img src="static/images/химик.jpg" alt="Product Image">
+</div>
+</a><div class="product_desc"><a href="https://blacksprut.com/products/5809">
+</a><div class="product_desc_info"><a href="https://blacksprut.com/products/5809">
+<h4 class="product_name text-truncate text-center" title="Лаборант">
+Химик
+</h4>
+</a><h4 class="product_name text-truncate text-center mt-0 pt-0"><a href="">
+<img width="13px" src="./agency_files/crown.svg" alt="">
+</a><a href="">Кадровое Агенство BS</a>
+</h4>
+<div class="price-box text-center">
+<div class="price-line">
+<span class="new-price">от <strong>100000 ₽</strong> /
+1
+шт
+</span>
+</div>
+<span class="sub-price">
+~0.07741935
+<i class="fa fa-btc" aria-hidden="true"></i>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="product-area li-laptop-product">
+<div class="container">
+<div class="row">
+<div class="col-lg-12">
+<div class="li-section-title">
+<h2>
+<span>Описание магазина</span>
+</h2>
+</div>
+<div class="shop-description p-3 mt-1">
+Мы - кадровое агентство, в котором объединились опытные и успешные рекрутеры, чтобы сделать подбор персонала качественным, быстрым, технологичным и доступным для компаний которые подтвердили временем и своей репутацией статус Честных и Дающих рост своим сотрудникам (курьерам) до Топовых менеджеров и руководителей магазинов.
+Мы будем благодарны за доверие нашей команде и сделаем всё, чтобы вы остались довольны работой с нами и рекомендовали нас другим!
+Даем гарантию, что устраиваясь через агентство Вы не будете обманутым своим работадателем.
+Работай с нами и поймешь, что Мы - сплоченная команда, работающая на результат!
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+
+</div>
+
+
+{% endautoescape %}{% include "footer.html" %}

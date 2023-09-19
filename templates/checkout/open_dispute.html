@@ -1,0 +1,23 @@
+{% include "header.html" %} {% autoescape off %}
+
+<div class="body-wrapper">
+    <div>
+        <div class="content-wraper pt-30 pb-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-10 mt-3 mt-sm-0">
+                        <p class="mb-0">Вы подтверждаете открытие диспута ?</p>
+
+                        <form action="{% url 'open_dispute' cur_order %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="_token" value="5CVgmHDlvoLvFFzxPy4hmoG8t1nglSWYMAJzAL7U">
+                            <button type="submit" class="btn btn-sm btn-success mt-2 px-4">Открыть диспут</button>
+                            <p></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endautoescape %}{% include "footer.html" %}

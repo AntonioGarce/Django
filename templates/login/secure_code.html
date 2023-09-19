@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)https://blacksprut.com/secret -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="https://blacksprut.com/docs/4.0/assets/img/favicons/favicon.ico">
+<title>Blacksprut</title>
+
+<link href="static/Blacksprut_files/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+<div class="interview0header mt-3 text-center">
+<h5>BLACKSPRUT.COM</h5>
+</div>
+<div class="card mt-2 col-12 col-md-6" style="margin: auto">
+<div class="card-body">{% if user.is_authenticated %}
+<form action="{% url 'secure_code' %}" method="post">
+            {% csrf_token %}
+<input type="hidden" name="_token" value="edmrsaoD5XEMUjz6vrH2ltKGcwxYxmYcYHQpAl1S"> <div class="form-group">
+
+
+    <textarea type="text" class="form-control" style="resize:none" readonly="">{{user.secure_code}}</textarea>
+
+    <small>Сохраните данный код для решения вопросов, связанных с аккаунтом.</small><br>
+<strong class="small font-weight-bold">Код будет отображен только один раз</strong>
+</div>
+<button value="confirm" type="submit" class="btn btn-success btn-sm px-4">Подтвердить</button>
+</form> {% endif %}
+</div>
+</div>
+</div>
+
+
+</body></html>

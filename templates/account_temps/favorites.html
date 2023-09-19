@@ -1,0 +1,70 @@
+{% include "header.html" %} {% autoescape off %}
+{% include "account_asset.html" %}
+{% if favorites|length == 0 %}
+    <p>Избранные товары отсутствуют</p>
+    <div class="paginatoin-area">
+        <div class="row">
+            <div class="col-md-4">
+                <p>0 результатов</p>
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+    </div>
+{% else %}
+<div class="col-12 col-md-10 mt-3 mt-sm-0">
+<div class="container">
+    <table class="table table-bordered table-sm">
+        <thead>
+            <tr>
+                <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">id</font></font></th>
+                <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Product Name</font></font></th>
+                <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Price</font></font></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody> 
+            {% for i in favorites %}                                                                                   
+            <tr>
+                <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{i.id}}</font></font></td>
+                <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{i.name}}</font></font></td>
+                <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{i.min_price}}</font></font></td>
+                <td>
+                    <a href="{% url 'item' i.id %}" class="btn btn-sm btn-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Look</font></font></a>
+                </td>
+            </tr>          
+            {% endfor %}                                                               
+        </tbody>
+    </table>
+   <tr>
+{% endif %} 
+
+
+    <!-- {% if user.is_authenticated %} -->
+    <!-- {% if not favorites %}
+    <p>Избранные товары отсутствуют</p>
+    <div class="paginatoin-area">
+        <div class="row">
+            <div class="col-md-4">
+                <p>0 результатов</p>
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+    </div>
+    {%else %}
+        {% for i in favorites %}
+            <p>{{ i.name }}</p>
+        {% endfor %}
+    {% endif %} -->
+    <!-- {% endif %} -->
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+{% endautoescape %}{% include "footer.html" %}

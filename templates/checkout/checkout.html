@@ -1,0 +1,100 @@
+{% include "header.html" %} {% autoescape off %}
+
+{% load custom_filter %}
+<div class="body-wrapper">
+
+<div>
+<div class="breadcrumb-area">
+<div class="container">
+<div class="breadcrumb-content">
+<ul>
+<li><a href="{% url 'index' %}">Главная</a></li>
+<li>
+<a href="/7275">
+    {{ item.name }}
+</a>
+</li>
+<li>
+<a class="active">
+Оформление заказа
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="checkout-area pt-30 pb-60">
+<div class="container">
+<div class="row">
+<div class="col-lg-12 col-12">
+<div class="your-order">
+<div class="order-header">
+<h3 class="mb-3">Подтверждение заказа</h3>
+<strong>Ваш баланс: {{ user.btc_amount }} BTC</strong>
+<span class="d-block text-muted"></span>
+<div class="d-flex">
+<form action="">
+<input type="text" class="promo-input mb-3" placeholder="промокод" name="promocode">
+<button type="submit" class="promo-apply-btn mb-3">Применить</button>
+</form>
+</div>
+</div>
+<div class="your-order-table table-responsive">
+<table class="table">
+<thead>
+<tr>
+<th class="cart-product-name">Товар</th>
+<th class="cart-product-total">Информация</th>
+</tr>
+</thead>
+<tbody>
+<tr class="cart_item">
+<td class="cart-product-name">{{ item.name }}
+<strong class="product-quantity">
+× {{ amount }}
+</strong>
+</td>
+<td class="cart-product-total">
+<span class="amount">
+Город: {{ city }}
+</span>
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr class="order-total">
+<th>Цена</th>
+<td>
+<span class="amount">{{ price|divide:kurs }}
+<i class="fa fa-btc"></i> /{{ price }} ₽</span>
+</td>
+</tr>
+</tfoot>
+</table>
+</div>
+<div class="payment-method">
+<a href="" class="shop-rules-btn mb-2 d-inline-block">Правила покупки товара</a>
+
+    <form action="{% url 'checkout' loc.id %}" method="post">
+    {% csrf_token %}
+<input type="hidden" name="_token" value="0Ie2l9Xl0hDXtuKOXp5en6esTtdmClOMUbDAn55G"> <input type="hidden" class="promo-input" name="promocode" value="">
+    <div class="order-button-payment">
+<input value="Купить" type="submit">
+</div>
+</form>
+</div>
+</div>
+<div class="shop-rules p-3 mt-60" id="rules">
+<h3>Правила магазина</h3>
+    {{ store_rules }}
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+{% endautoescape %}{% include "footer.html" %}

@@ -1,0 +1,46 @@
+{% include "header.html" %} {% autoescape off %}
+{% include "account_asset.html" %}
+<div class="col-12 col-md-10 mt-3 mt-sm-0">
+    <h6 class="sm mb-3">Купленные товары</h6>
+    <div class="table-content table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Товар</th>
+                <th scope="col">Цена</th>
+                <th scope="col">Магазин</th>
+                <th scope="col">Время</th>
+                <th scope="col">Действия</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr> {% if user.is_authenticated %}
+
+                {% for i in user_orders %}
+                <td> {{ i.num_order }}</td>
+                <td> {{ i.item }}</td>
+                <td> {{ i.price }}</td>
+                <td> {{ i.store }}</td>
+                <td> {{ i.time }}</td>
+                <td><a class="btn btn-sm custom-btn__black fs-d w-100"
+                       href="{% url 'dispute_window' i.num_order i.num_order %}">
+                    К заказу
+                </a></td>
+
+            </tr>
+            {% endfor %}
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+{% endautoescape %}{% include "footer.html" %}

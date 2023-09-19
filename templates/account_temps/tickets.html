@@ -1,0 +1,60 @@
+{% include "header.html" %} {% autoescape off %}
+
+{% include "account_asset.html" %}
+
+<div class="col-12 col-md-10 mt-3 mt-sm-0">
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-info mb-2 mt-2">
+            <p class="mb-0">{{message}}</p>
+            </div>
+        {% endfor %}
+          {% endif %}
+<h6 class="sm mb-2">Ваши обращения в саппорт</h6>
+<h5>В связи с ажиотажем, время ответа может быть увеличено! Мы ответим всем!
+На нашей платформе не используется JS в целях безопасности, так что просим Вас следить за ответами
+модератора, обновляя страницу.</h5>
+<p>Хочешь открыть магазин ? ЖМИ ЖЕЛТУЮ КНОПКУ ВЫШЕ!</p>
+<a class="mb-3 d-inline-block button custom-btn__black px-4 fs-d" href="{% url 'create_ticket'%}">
+Создать тикет
+</a>
+<div class="table-content table-responsive">
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Тема</th>
+<th scope="col">Статус</th>
+<th scope="col">Действия</th>
+<th scope="col">Дата создания</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  {% if user.is_authenticated %}
+
+        {% for i in user_tickets %}
+
+        <td class="align-middle"> {{ i.thema }}</td>
+    {% if i.status == False %}
+        <td class="align-middle"> Новый</td>
+    {% else %}
+        <td class="align-middle"> Закрытый</td>
+    {% endif %}
+        <td class="align-middle"> <a href="{% url 'ticket_window' i.id %}">Посмотреть</a></td>
+        <td class="align-middle"> {{ i.data }}</td>
+
+
+</tr>{% endfor %}{% endif %}
+    </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+{% endautoescape %}{% include "footer.html" %}
